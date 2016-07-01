@@ -1,0 +1,13 @@
+main{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.box{
+    margin: 0 auto;
+    width: 60%;   
+}
+
+.peso{
+    width: 60px;
+}

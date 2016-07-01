@@ -1,0 +1,56 @@
+<main>
+    <h2 class="text-center">Calcupienso</h2>
+    <h4 class="text-center">Cálculo de la cantidad correcta de pienso para tu perro</h4>
+
+
+    <div class="box" *ngIf="step>1">
+
+        <button (click)="atras()" class="btn btn-default">
+        <span class="glyphicon glyphicon-menu-left"></span> Atrás
+        </button>
+    </div>
+
+    <div class="list-group box text-center" *ngIf="step===1">
+        <h5>Introduce el peso de tu perro y selecciona un tipo:</h5>
+        <label class="form-inline">Peso: <input type="text" class="peso form-control "[(ngModel)]="peso"> Kg</label>
+        <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+        <a (click)="p1(140)" href="#" class="list-group-item">Cachorro</a>
+        <a (click)="p1(130)" href="#" class="list-group-item">Adulto</a>
+        <a (click)="p1(200)" href="#" class="list-group-item">Gran Danés adulto</a>
+        <a (click)="p1(180)" href="#" class="list-group-item">Terrier adulto</a>
+        <a (click)="p1(95)" href="#" class="list-group-item">Adulto muy poco activo o castrado</a>
+        <a (click)="p1(105)" href="#" class="list-group-item">Anciano o de raza nórdica</a>
+    </div>
+
+    <div class="list-group box text-center" *ngIf="step===2">
+        <h5>¿A qué grupo de razas pertenece?</h5>
+        <a (click)="p2(0.8)" href="#" class="list-group-item">Labradores, Golden y Nórdicos</a>
+        <a (click)="p2(0.9)" href="#" class="list-group-item">Cocker,  Beagle… (tendencia a obesidad)</a>
+        <a (click)="p2(1.1)" href="#" class="list-group-item">Gran Danés, Greyhound... (Tendencia a la delgadez)</a>
+        <a (click)="p2(1)" href="#" class="list-group-item">Otros</a>
+    </div>
+
+    <div class="list-group box text-center" *ngIf="step===3">
+        <h5>¿A qué grupo de actividad pertenece?</h5>
+        <a (click)="p3(0.8)" href="#" class="list-group-item">Muy tranquilo</a>
+        <a (click)="p3(0.9)" href="#" class="list-group-item">Tranquilo</a>
+        <a (click)="p3(1)" href="#" class="list-group-item">Normal</a>
+        <a (click)="p3(1.1)" href="#" class="list-group-item">Activo</a>
+        <a (click)="p3(1.2)" href="#" class="list-group-item">Hiperactivo o Terriers</a>
+        <a (click)="p3(1.2)" href="#" class="list-group-item">Perro deportivo o de trabajo corto e inteso</a>
+        <a (click)="p3(1.3)" href="#" class="list-group-item">Perro deportivo o de trabajo de resistencia (5/8 Km día)</a>
+        <a (click)="p3(1.7)" href="#" class="list-group-item">Perro deportivo o de trabajo de resistencia (10/20 Km día)</a>
+        <a (click)="p3(2)" href="#" class="list-group-item">Perro deportivo o de trabajo de resistencia (20/50 Km día)</a>
+    </div>
+
+    <div class="list-group box text-center" *ngIf="step===4">
+        <h5>¿A qué grupo de razas pertenece?</h5>
+        <a (click)="p2(0.8)" href="#" class="list-group-item">Crecimiento</a>
+        <a (click)="p2(0.9)" href="#" class="list-group-item">Gestación</a>
+        <a (click)="p2(1.1)" href="#" class="list-group-item">Lactancia</a>
+        <a (click)="p2(1)" href="#" class="list-group-item">Vejez (+7 años)</a>
+        <a (click)="p2(0.8)" href="#" class="list-group-item">Castración</a>
+    </div>
+
+
+</main>
