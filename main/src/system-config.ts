@@ -1,9 +1,13 @@
+// SystemJS configuration file, see links for more information
+// https://github.com/systemjs/systemjs
+// https://github.com/systemjs/systemjs/blob/master/docs/config-api.md
+
 /***********************************************************************************************
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-   '@angular2-material': 'vendor/@angular2-material'
+'@angular2-material': 'vendor/@angular2-material'
 };
 
 /** User packages configuration. */
@@ -17,8 +21,9 @@ const materialPkgs:string[] = [
   'checkbox',
   'grid-list',
   'icon',
-  'input',
+  'input', 
   'list',
+  'menu',
   'progress-bar',
   'progress-circle',
   'radio',
@@ -26,7 +31,6 @@ const materialPkgs:string[] = [
   'slide-toggle',
   'tabs',
   'toolbar'
-
 ];
 
 materialPkgs.forEach((pkg) => {
@@ -42,6 +46,7 @@ const barrels: string[] = [
   '@angular/core',
   '@angular/common',
   '@angular/compiler',
+  '@angular/forms',
   '@angular/http',
   '@angular/router',
   '@angular/platform-browser',
