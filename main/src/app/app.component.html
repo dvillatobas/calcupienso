@@ -1,9 +1,60 @@
-<md-toolbar color="primary">
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    Menu a rellenar
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    <span class="app-title">Calcupienso</span> 
+    <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+  <div class="app-content">
+    <md-card>
+      <md-card-title>Cálculo de la cantidad correcta de pienso para tu perro</md-card-title>
+      <md-card-content>
+        <md-card >
+          <md-card-title>¿Cómo es tu perro?</md-card-title>
+          <md-radio-group [(ngModel)]="p1">
+            <md-radio-button *ngFor="let t of tipo" name="ncr" [value]="t[1]">
+              {{t[0]}}
+            </md-radio-button>
+            
+          </md-radio-group>
+        </md-card>
 
-  <span>Calcupienso</span>
-  
-  
-</md-toolbar>
-<button md-raised-button color="primary">holaaaa </button>
-<button md-raised-button color="accent">holaaaa </button>
-<button md-raised-button color="warn">holaaaa </button>
+        <md-card>
+          <md-card-title>¿Qué raza es?</md-card-title>
+          <md-radio-group [(ngModel)]="k1">
+            <md-radio-button *ngFor="let r of raza" name="k1" [value]="r[1]">
+              {{r[0]}}
+            </md-radio-button>
+            
+          </md-radio-group>
+        </md-card>
+        <md-card>
+          <md-card-title>¿Qué nivel de actividad tiene?</md-card-title>
+          <md-radio-group [(ngModel)]="k2">
+            <md-radio-button *ngFor="let a of actividad" name="k2" [value]="a[1]">
+              {{a[0]}}
+            </md-radio-button>
+          </md-radio-group>
+        </md-card>
+        <md-card>
+          <md-card-title>Estado fisiológico</md-card-title>
+          <md-radio-group>
+            <md-radio-button *ngFor="let f of fisio" (click)="slider(f[0])">{{f[0]}}
+              <md-slider *ngIf="slider_selected == f[0]" [(ngModel)]="k3" [min]="f[1]" [max]="f[2]" [step]="f[3]"></md-slider>
+                {{k3}}
+
+            </md-radio-button>
+          </md-radio-group>
+
+
+          
+        </md-card>
+
+      </md-card-content>
+    </md-card>
+  </div>
+</md-sidenav-layout>
