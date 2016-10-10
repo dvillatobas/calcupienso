@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -46,9 +46,7 @@ export class AppComponent {
   private k4:number;
   private slider_selected:string;
 
-  ngOnInit(){
-    
-  }
+  
   slider(s:string){
     this.slider_selected = s;
   }
