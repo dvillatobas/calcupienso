@@ -54,6 +54,8 @@ export class AppComponent {
   private slider_selected:string;
   private selected;
   private selected_salud;
+  private peso:number=20;
+  private pienso:number=4000;
   
   slider1(s){
     this.selected = s;
@@ -66,4 +68,8 @@ export class AppComponent {
   show(){
     console.log(this.k3)
   }
+  exp(b,e){
+    return Math.pow(b,e);
+  }
+
 }

@@ -61,7 +61,26 @@
                 <span *ngIf="k4">{{k4/10}}</span>
           </md-radio-group>
         </md-card>
-        
+        <md-card>
+          <md-card-title>Para finalizar</md-card-title>
+          <md-card-content>
+            <md-input placeholder="Peso" [(ngModel)]="peso">
+              <span md-suffix>Kg</span>
+            </md-input>
+          </md-card-content>
+          <md-card-content>
+            <md-input placeholder="Energía metabolizante del pienso" [(ngModel)]="pienso">
+              <span md-suffix>Kcal/Kg</span>
+            </md-input>
+          </md-card-content>
+          
+        </md-card>
+        <md-card *ngIf="peso != undefined && pienso != undefined">
+          <md-card-title>Cantidad diaria</md-card-title>
+          <md-card-content>
+            Tu perro debe comer {{p1*(exp(peso,0.75)) | number:'1.1-2'}} kg diarios.
+          </md-card-content>
+        </md-card>
 
       </md-card-content>
     </md-card>
