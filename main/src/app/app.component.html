@@ -43,14 +43,25 @@
         <md-card>
           <md-card-title>Estado fisiológico</md-card-title>
           <md-radio-group #sssss>
-            <md-radio-button value="0" name="sssss" *ngFor="let f of fisio" (click)="slider(f)">{{f[0]}}
+            <md-radio-button value="0" name="sssss" *ngFor="let f of fisio" (click)="slider1(f)">{{f[0]}}
             </md-radio-button>
             <p *ngIf="k3">{{selected[3]}}</p>
-            <md-slider [(ngModel)]="k3" *ngIf="k3"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
+            <md-slider [(ngModel)]="k3" *ngIf="k3 && selected[2] != undefined"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
                 <span *ngIf="k3">{{k3/10}}</span>
           </md-radio-group>
           
         </md-card>
+        <md-card>
+          <md-card-title>Estado de salud</md-card-title>
+          <md-radio-group #sssss>
+            <md-radio-button value="0" name="sssss" *ngFor="let s of salud" (click)="slider2(s)">{{s[0]}}
+            </md-radio-button>
+            <p *ngIf="k4">{{selected_salud[3]}}</p>
+            <md-slider [(ngModel)]="k4" *ngIf="k4 && selected_salud[2] != undefined"  [min]="selected_salud[1]" [max]="selected_salud[2]" [value]="k4" ></md-slider>
+                <span *ngIf="k4">{{k4/10}}</span>
+          </md-radio-group>
+        </md-card>
+        
 
       </md-card-content>
     </md-card>

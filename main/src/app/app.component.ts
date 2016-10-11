@@ -37,10 +37,14 @@ export class AppComponent {
     ['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
     ['Lactancia',20,40,'A valorar entre 2 y 4:'],
     ['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
-    ['Castración',8,8,'El valor es 0,8']
+    ['Castración',8,undefined,'El valor es 0,8']
   ];
   private salud=[
-    
+    ['Inactividad o reposo forzado',7,9],
+    ['Bueno',10],
+    ['Obesidad',6],
+    ['Hipermetabolismo (recuperación de una cirugía, infecciones, cáncer, quemaduras...)',11,20]
+
   ];
   private p1:number;
   private k1:number;
@@ -49,10 +53,15 @@ export class AppComponent {
   private k4:number;
   private slider_selected:string;
   private selected;
+  private selected_salud;
   
-  slider(s){
+  slider1(s){
     this.selected = s;
     this.k3 = s[1];
+  }
+  slider2(s){
+    this.selected_salud = s;
+    this.k4 = s[1];
   }
   show(){
     console.log(this.k3)
