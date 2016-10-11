@@ -45,7 +45,7 @@
           <md-radio-group #sssss>
             <md-radio-button value="0" name="sssss" *ngFor="let f of fisio" (click)="slider(f)">{{f[0]}}
             </md-radio-button>
-
+            <p *ngIf="k3">{{selected[3]}}</p>
             <md-slider [(ngModel)]="k3" *ngIf="k3"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
                 <span *ngIf="k3">{{k3/10}}</span>
           </md-radio-group>

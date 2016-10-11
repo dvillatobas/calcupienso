@@ -33,11 +33,14 @@ export class AppComponent {
     ['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',2]
   ];
   private fisio=[
-    ['Crecimiento',12,20],
-    ['Gestación',11,15],
-    ['Lactancia',20,40],
-    ['Vejez (+7 años)',8,9],
-    ['Castración',8,8]
+    ['Crecimiento',12,20,'Desde perros mini (1,2) a perros gigantes(2):'],
+    ['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
+    ['Lactancia',20,40,'A valorar entre 2 y 4:'],
+    ['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
+    ['Castración',8,8,'El valor es 0,8']
+  ];
+  private salud=[
+    
   ];
   private p1:number;
   private k1:number;
@@ -46,12 +49,10 @@ export class AppComponent {
   private k4:number;
   private slider_selected:string;
   private selected;
-  private showslider = false;
   
   slider(s){
     this.selected = s;
     this.k3 = s[1];
-    this.showslider = true;
   }
   show(){
     console.log(this.k3)
