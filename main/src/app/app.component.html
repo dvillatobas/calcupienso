@@ -42,15 +42,13 @@
         </md-card>
         <md-card>
           <md-card-title>Estado fisiológico</md-card-title>
-          <md-radio-group>
-            <md-radio-button *ngFor="let f of fisio" (click)="slider(f[0])">{{f[0]}}
-              <md-slider *ngIf="slider_selected == f[0]" [(ngModel)]="k3" [min]="f[1]" [max]="f[2]" [step]="f[3]"></md-slider>
-                {{k3}}
-
+          <md-radio-group #sssss>
+            <md-radio-button value="0" name="sssss" *ngFor="let f of fisio" (click)="slider(f)">{{f[0]}}
             </md-radio-button>
+
+            <md-slider [(ngModel)]="k3" *ngIf="k3"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
+                <span *ngIf="k3">{{k3/10}}</span>
           </md-radio-group>
-
-
           
         </md-card>
 
