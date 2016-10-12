@@ -54,8 +54,8 @@ export class AppComponent {
   private slider_selected:string;
   private selected;
   private selected_salud;
-  private peso:number=20;
-  private pienso:number=4000;
+  private peso:number;
+  private pienso:number;
   
   slider1(s){
     this.selected = s;
@@ -72,4 +72,15 @@ export class AppComponent {
     return Math.pow(b,e);
   }
 
+  fulldata(){
+    return (
+      this.p1!=undefined &&
+      this.k1!=undefined &&
+      this.k2!=undefined &&
+      this.k3!=undefined &&
+      this.k4!=undefined &&
+      this.peso!=undefined &&
+      this.pienso!=undefined
+      );
+  }
 }
