@@ -16,20 +16,20 @@ export class AppComponent {
     ['Anciano o raza nórdica',105]
   ];
   private raza=[
-    ['Labradores, golden y nórdicos',0.8],
-    ['Cocker, Beagle... (tendencia a obesidad)',0.9],
-    ['Gran danés, Greyhound...(tendencia a delgadez)',1.1],
-    ['Otros',1]
+    ['Labradores, golden y nórdicos',8],
+    ['Cocker, Beagle... (tendencia a obesidad)',9],
+    ['Gran danés, Greyhound...(tendencia a delgadez)',11],
+    ['Otros',10]
   ];
   private actividad=[
-    ['Muy tranquilo',0.8],
-    ['Tranquilo',0.9],
-    ['Normal',1],
-    ['Activo',1.1],
-    ['Hiperactivo o Terriers',1.2],
-    ['Perro deportivo o de trabajo corto e intenso',1.2],
-    ['Perro deportivo o de trabajo de resistencia (5-8Km/dia)',1.3],
-    ['Perro deportivo o de trabajo de resistencia (10-20Km/dia)',1.7],
+    ['Muy tranquilo',8],
+    ['Tranquilo',9],
+    ['Normal',10],
+    ['Activo',11],
+    ['Hiperactivo o Terriers',12],
+    ['Perro deportivo o de trabajo corto e intenso',12],
+    ['Perro deportivo o de trabajo de resistencia (5-8Km/dia)',13],
+    ['Perro deportivo o de trabajo de resistencia (10-20Km/dia)',17],
     ['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',2]
   ];
   private fisio=[

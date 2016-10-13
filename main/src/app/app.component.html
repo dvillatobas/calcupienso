@@ -76,7 +76,7 @@
             </md-card-content>
           
           <md-card-content class="fin" *ngIf="fulldata()">
-              <h2>Tu perro debe comer {{(p1*(exp(peso,0.75))*k1*k2*k3*k4*10)/pienso | number:'1.1-2'}} gr diarios.</h2>
+              <h2>Tu perro debe comer {{(p1*(exp(peso,0.75))*k1*k2*k3*k4)/pienso/10 | number:'1.1-2'}} gr diarios.</h2>
           </md-card-content>
         </md-card>
         
