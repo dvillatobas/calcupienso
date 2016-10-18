@@ -1,6 +1,6 @@
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="side" class="app-sidenav">
-    Menu a rellenar
+    <button md-raised-button (click)="link()">Generar enlace</button>
   </md-sidenav>
   <md-toolbar color="primary">
     <button class="app-icon-button" (click)="sidenav.toggle()">
@@ -42,8 +42,8 @@
         </md-card>
         <md-card>
           <md-card-title>Estado fisiológico</md-card-title>
-          <md-radio-group #sssss>
-            <md-radio-button value="0" name="sssss" *ngFor="let f of fisio" (click)="slider1(f)">{{f[0]}}
+          <md-radio-group [(ngModel)]="s_fisio">
+            <md-radio-button [value]="fisio.indexOf(f)" name="sssss" *ngFor="let f of fisio" (click)="slider1(f)">{{f[0]}}
             </md-radio-button>
             <p *ngIf="k3">{{selected[3]}}</p>
             <md-slider [(ngModel)]="k3" *ngIf="k3 && selected[2] != undefined"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
@@ -53,15 +53,15 @@
         </md-card>
         <md-card>
           <md-card-title>Estado de salud</md-card-title>
-          <md-radio-group #sssss>
-            <md-radio-button value="0" name="sssss" *ngFor="let s of salud" (click)="slider2(s)">{{s[0]}}
+          <md-radio-group [(ngModel)]="s_salud">
+            <md-radio-button [value]="salud.indexOf(s)" name="sssss" *ngFor="let s of salud" (click)="slider2(s)">{{s[0]}}
             </md-radio-button>
             <p *ngIf="k4">{{selected_salud[3]}}</p>
             <md-slider [(ngModel)]="k4" *ngIf="k4 && selected_salud[2] != undefined"  [min]="selected_salud[1]" [max]="selected_salud[2]" [value]="k4" ></md-slider>
                 <span *ngIf="k4">{{k4/10}}</span>
           </md-radio-group>
         </md-card>
-        <md-card class="card-fin">
+        <md-card class="card-fin" id="end"> 
           
             <md-card-title>Para finalizar</md-card-title>
             <md-card-content >
@@ -77,6 +77,10 @@
           
           <md-card-content class="fin" *ngIf="fulldata()">
               <h2>Tu perro debe comer {{(p1*(exp(peso,0.75))*k1*k2*k3*k4)/pienso/10 | number:'1.1-2'}} gr diarios.</h2>
+              <button md-raised-button color=primary (click)="link()">Generar enlace</button>
+              <p>Este enlace lo podrás guardar en marcadores para no tener que introducir de nuevo todos los datos de tu perro.</p>
+              <input type="text" class="enlace" *ngIf="enlace" [ngModel]="enlace">
+              <button md-raised-button class="ir-btn" *ngIf="enlace" color=primary (click)="ir()">Ir</button>
           </md-card-content>
         </md-card>
         

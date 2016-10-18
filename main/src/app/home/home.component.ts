@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'home-component',
@@ -59,16 +59,38 @@ export class HomeComponent implements OnInit{
   private selected_salud;
   private peso:number;
   private pienso:number;
+  private s_fisio;
+  private s_salud;
+
+  private enlace;
 
   private ruta;
 
   constructor(
-    private param : ActivatedRoute
+    private param : ActivatedRoute,
+    private router : Router
   ){}
 
   ngOnInit(){
+    let ruta : string;
     this.param.params.forEach((p:Params)=>{
-      this.ruta = p['id'];
+      ruta = p['id'];
+      if(ruta != undefined){
+        this.p1 = +ruta.slice(0,3);
+        this.k1 = +ruta.slice(3,5);
+        this.k2 = +ruta.slice(5,7);
+        this.selected = this.fisio[+ruta.slice(7,8)];
+        this.s_fisio = +ruta.slice(7,8);
+        this.k3 = +ruta.slice(8,10);
+        this.selected_salud = this.salud[+ruta.slice(10,11)];
+        this.s_salud = +ruta.slice(10,11);
+
+        this.k4 = +ruta.slice(11,13);
+        this.pienso = +ruta.slice(13,17);
+        this.peso = +ruta.slice(17,ruta.length)/10;
+        
+      }
+      
     })
   }
   
@@ -97,5 +119,47 @@ export class HomeComponent implements OnInit{
       this.peso!=undefined &&
       this.pienso!=undefined
       );
+  }
+
+  link(){
+    let url:string = '';
+    url += this.p1.toString();
+    if(this.k1<10){
+      url+="0";
+    }
+    url +=this.k1.toString();
+
+    if(this.k2<10){
+      url+="0";
+    }
+    url +=this.k2.toString();
+
+    url += this.fisio.indexOf(this.selected).toString();
+
+    if(this.k3<10){
+      url+="0";
+    }
+    url +=this.k3.toString();
+
+    url += this.salud.indexOf(this.selected_salud).toString();
+
+    if(this.k4<10){
+      url+="0";
+    }
+    url +=this.k4.toString();
+
+    url += this.pienso.toString();
+
+    let p:string = (this.peso * 10).toString().slice(0,3);
+
+    url += p;
+
+    
+    this.enlace = 'localhost:4200/'+url;
+  }
+
+  ir(){
+    console.log(this.enlace)
+    this.router.navigate([this.enlace.split("/")[1]]);
   }
 }
