@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'home-component',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+
+  
   
   private tipo=[
     ['Cachorro',140],
@@ -56,6 +59,18 @@ export class HomeComponent {
   private selected_salud;
   private peso:number;
   private pienso:number;
+
+  private ruta;
+
+  constructor(
+    private param : ActivatedRoute
+  ){}
+
+  ngOnInit(){
+    this.param.params.forEach((p:Params)=>{
+      this.ruta = p['id'];
+    })
+  }
   
   slider1(s){
     this.selected = s;
