@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CalcuService } from '../calcu.service';
+import { CalcuService } from '../services/calcu.service';
 
 @Component({
   selector: 'home-component',
@@ -13,13 +13,12 @@ import { CalcuService } from '../calcu.service';
 export class HomeComponent implements OnInit{
   
 
-  private p1:number;
+  private nrc:number;
   private k1:number;
   private k2:number;
   private k3:number;
   private k4:number;
   private slider_selected:string;
-  private selected;
   private selected_salud;
   private peso:number;
   private pienso:number;
@@ -43,11 +42,10 @@ export class HomeComponent implements OnInit{
       ruta = p['id'];
       if(ruta != undefined){
         this.enlace = this.cserve.getLocalhost() + ruta;
-        this.p1 = +ruta.slice(0,3);
+        this.nrc = +ruta.slice(0,3);
         this.k1 = +ruta.slice(3,5);
         this.k2 = +ruta.slice(5,7);
-        this.selected = this.cserve.getFisio()[+ruta.slice(7,8)];
-        this.s_fisio = +ruta.slice(7,8);
+ //       this.s_fisio = +ruta.slice(7,8);
         this.k3 = +ruta.slice(8,10);
         this.selected_salud = this.cserve.getSalud()[+ruta.slice(10,11)];
         this.s_salud = +ruta.slice(10,11);
@@ -60,10 +58,14 @@ export class HomeComponent implements OnInit{
       
     })
   }
+
+  inicializarK3(f){
+      this.k3 = f[1]
+  }
   
-  slider1(s){
-    this.selected = s;
-    this.k3 = s[1];
+  sliderFisio(f){
+    console.log(this.s_fisio);
+    this.k3 = f[1];
   }
   slider2(s){
     this.selected_salud = s;
@@ -78,7 +80,7 @@ export class HomeComponent implements OnInit{
 
   link(){
     let url:string = '';
-    url += this.p1.toString();
+    url += this.nrc.toString();
     if(this.k1<10){
       url+="0";
     }
@@ -89,7 +91,7 @@ export class HomeComponent implements OnInit{
     }
     url +=this.k2.toString();
 
-    url += this.cserve.getFisio().indexOf(this.selected).toString();
+    url += this.cserve.getFisio().indexOf(this.s_fisio).toString();
 
     if(this.k3<10){
       url+="0";
@@ -118,4 +120,6 @@ export class HomeComponent implements OnInit{
     console.log(this.enlace)
     this.router.navigate([this.enlace.split("/")[1]]);
   }
+
+  
 }

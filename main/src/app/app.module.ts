@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { MaterialModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
-import { CalcuService } from './calcu.service';
+import { CalcuService } from './services/calcu.service';
 
 import { AppComponent } from './app.component';
 

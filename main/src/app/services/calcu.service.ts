@@ -1,5 +1,25 @@
 import { Injectable } from '@angular/core';
 
+export class Calcu{
+	constructor(
+		private p1,
+		private k1:number,
+  		private k2:number,
+  		private k3:number,
+  		private k4:number,
+  		private slider_selected:string,
+  		private selected,
+  		private selected_salud,
+  		private peso:number,
+  		private pienso:number,
+  		private s_fisio,
+  		private s_salud,
+
+  		private enlace,
+  		private ruta,
+	){}
+}
+
 @Injectable()
 export class CalcuService {
 	private LOCALHOST = 'localhost:4200/';
@@ -11,13 +31,13 @@ export class CalcuService {
 		['Terrier adulto',180],
 		['Poco activo o castrado',95],
 		['Anciano o raza nórdica',105]
- 	 ];
+ 	];
 	private raza=[
 		['Labradores, golden y nórdicos',8],
 		['Cocker, Beagle... (tendencia a obesidad)',9],
 		['Gran danés, Greyhound...(tendencia a delgadez)',11],
 		['Otros',10]
-  ];
+  	];
 	private actividad=[
 		['Muy tranquilo',8],
 		['Tranquilo',9],
@@ -28,7 +48,7 @@ export class CalcuService {
 		['Perro deportivo o de trabajo de resistencia (5-8Km/dia)',13],
 		['Perro deportivo o de trabajo de resistencia (10-20Km/dia)',17],
 		['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',2]
-  ];
+  	];
 	private fisio=[
 		['Crecimiento',12,20,'Desde perros mini (1,2) a perros gigantes(2):'],
 		['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
@@ -36,14 +56,14 @@ export class CalcuService {
 		['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
 		['Castración',8,undefined,'El valor es 0,8'],
 		['Ninguno de ellos',10,undefined, '']
-  ];
-  private salud=[
+  	];
+  	private salud=[
 		['Inactividad o reposo forzado',7,9],
 		['Bueno',10],
 		['Obesidad',6],
 		['Hipermetabolismo (recuperación de una cirugía, infecciones, cáncer, quemaduras...)',11,20]
 
-  ];
+  	];
 	
 	constructor() { }
 	getTipo(){
@@ -65,16 +85,21 @@ export class CalcuService {
 		return this.LOCALHOST;
 	}
 	fulldata(p1,k1,k2,k3,k4,peso,pienso){
-    return (
-      p1!=undefined &&
-      k1!=undefined &&
-      k2!=undefined &&
-      k3!=undefined &&
-      k4!=undefined &&
-      peso!=undefined &&
-      pienso!=undefined
-      );
-  }
+	    return (
+	      p1!=undefined &&
+	      k1!=undefined &&
+	      k2!=undefined &&
+	      k3!=undefined &&
+	      k4!=undefined &&
+	      peso!=undefined &&
+	      pienso!=undefined
+	      );
+  	}
+	calcular(p1,k1,k2,k3,k4,peso,pienso){
+		return p1*(Math.pow(peso,0.75))*k1*k2*k3*k4/pienso/10;
+	}
+	
+
 
 
 }
