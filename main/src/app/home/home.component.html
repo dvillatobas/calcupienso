@@ -16,7 +16,7 @@
         <md-card >
           <md-card-title>¿Cómo es tu perro?</md-card-title>
           <md-radio-group [(ngModel)]="p1">
-            <md-radio-button *ngFor="let t of tipo" name="ncr" [value]="t[1]">
+            <md-radio-button *ngFor="let t of cserve.tipo" name="ncr" [value]="t[1]">
               {{t[0]}}
             </md-radio-button>
             
@@ -26,7 +26,7 @@
         <md-card>
           <md-card-title>¿Qué raza es?</md-card-title>
           <md-radio-group [(ngModel)]="k1">
-            <md-radio-button *ngFor="let r of raza" name="k1" [value]="r[1]">
+            <md-radio-button *ngFor="let r of cserve.raza" name="k1" [value]="r[1]">
               {{r[0]}}
             </md-radio-button>
             
@@ -35,7 +35,7 @@
         <md-card>
           <md-card-title>¿Qué nivel de actividad tiene?</md-card-title>
           <md-radio-group [(ngModel)]="k2">
-            <md-radio-button *ngFor="let a of actividad" name="k2" [value]="a[1]">
+            <md-radio-button *ngFor="let a of cserve.actividad" name="k2" [value]="a[1]">
               {{a[0]}}
             </md-radio-button>
           </md-radio-group>
@@ -43,7 +43,7 @@
         <md-card>
           <md-card-title>Estado fisiológico</md-card-title>
           <md-radio-group [(ngModel)]="s_fisio">
-            <md-radio-button [value]="fisio.indexOf(f)" name="sssss" *ngFor="let f of fisio" (click)="slider1(f)">{{f[0]}}
+            <md-radio-button [value]="cserve.fisio.indexOf(f)" name="sssss" *ngFor="let f of cserve.fisio" (click)="slider1(f)">{{f[0]}}
             </md-radio-button>
             <p *ngIf="k3">{{selected[3]}}</p>
             <md-slider [(ngModel)]="k3" *ngIf="k3 && selected[2] != undefined"  [min]="selected[1]" [max]="selected[2]" [value]="k3" ></md-slider>
@@ -54,7 +54,7 @@
         <md-card>
           <md-card-title>Estado de salud</md-card-title>
           <md-radio-group [(ngModel)]="s_salud">
-            <md-radio-button [value]="salud.indexOf(s)" name="sssss" *ngFor="let s of salud" (click)="slider2(s)">{{s[0]}}
+            <md-radio-button [value]="cserve.salud.indexOf(s)" name="sssss" *ngFor="let s of cserve.salud" (click)="slider2(s)">{{s[0]}}
             </md-radio-button>
             <p *ngIf="k4">{{selected_salud[3]}}</p>
             <md-slider [(ngModel)]="k4" *ngIf="k4 && selected_salud[2] != undefined"  [min]="selected_salud[1]" [max]="selected_salud[2]" [value]="k4" ></md-slider>
@@ -75,7 +75,7 @@
               </md-input>
             </md-card-content>
           
-          <md-card-content class="fin" *ngIf="fulldata()">
+          <md-card-content class="fin" *ngIf="cserve.fulldata(p1,k1,k2,k3,k4,peso,pienso)">
               <h2>Tu perro debe comer {{(p1*(exp(peso,0.75))*k1*k2*k3*k4)/pienso/10 | number:'1.1-2'}} gr diarios.</h2>
               <button md-raised-button color=primary (click)="link()">Generar enlace</button>
               <p>Este enlace lo podrás guardar en marcadores para no tener que introducir de nuevo todos los datos de tu perro.</p>

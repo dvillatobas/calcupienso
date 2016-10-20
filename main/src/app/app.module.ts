@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { MaterialModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { CalcuService } from './calcu.service';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +25,7 @@ import { AppComponent } from './app.component';
       
     ])
   ],
-  providers: [],
+  providers: [CalcuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

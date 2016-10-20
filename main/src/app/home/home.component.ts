@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CalcuService } from '../calcu.service';
 
 @Component({
   selector: 'home-component',
@@ -10,49 +11,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 export class HomeComponent implements OnInit{
-  private LOCALHOST = 'localhost:4200/';
   
-  
-  private tipo=[
-    ['Cachorro',140],
-    ['Adulto',130],
-    ['Gran danés adulto',200],
-    ['Terrier adulto',180],
-    ['Poco activo o castrado',95],
-    ['Anciano o raza nórdica',105]
-  ];
-  private raza=[
-    ['Labradores, golden y nórdicos',8],
-    ['Cocker, Beagle... (tendencia a obesidad)',9],
-    ['Gran danés, Greyhound...(tendencia a delgadez)',11],
-    ['Otros',10]
-  ];
-  private actividad=[
-    ['Muy tranquilo',8],
-    ['Tranquilo',9],
-    ['Normal',10],
-    ['Activo',11],
-    ['Hiperactivo o Terriers',12],
-    ['Perro deportivo o de trabajo corto e intenso',12],
-    ['Perro deportivo o de trabajo de resistencia (5-8Km/dia)',13],
-    ['Perro deportivo o de trabajo de resistencia (10-20Km/dia)',17],
-    ['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',2]
-  ];
-  private fisio=[
-    ['Crecimiento',12,20,'Desde perros mini (1,2) a perros gigantes(2):'],
-    ['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
-    ['Lactancia',20,40,'A valorar entre 2 y 4:'],
-    ['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
-    ['Castración',8,undefined,'El valor es 0,8'],
-    ['Ninguno de ellos',10,undefined, '']
-  ];
-  private salud=[
-    ['Inactividad o reposo forzado',7,9],
-    ['Bueno',10],
-    ['Obesidad',6],
-    ['Hipermetabolismo (recuperación de una cirugía, infecciones, cáncer, quemaduras...)',11,20]
 
-  ];
   private p1:number;
   private k1:number;
   private k2:number;
@@ -67,14 +27,14 @@ export class HomeComponent implements OnInit{
   private s_salud;
 
   private enlace;
-
   private ruta;
 
   
 
   constructor(
     private param : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private cserve : CalcuService
   ){}
 
   ngOnInit(){
@@ -82,14 +42,14 @@ export class HomeComponent implements OnInit{
     this.param.params.forEach((p:Params)=>{
       ruta = p['id'];
       if(ruta != undefined){
-        this.enlace = this.LOCALHOST + ruta;
+        this.enlace = this.cserve.getLocalhost() + ruta;
         this.p1 = +ruta.slice(0,3);
         this.k1 = +ruta.slice(3,5);
         this.k2 = +ruta.slice(5,7);
-        this.selected = this.fisio[+ruta.slice(7,8)];
+        this.selected = this.cserve.getFisio()[+ruta.slice(7,8)];
         this.s_fisio = +ruta.slice(7,8);
         this.k3 = +ruta.slice(8,10);
-        this.selected_salud = this.salud[+ruta.slice(10,11)];
+        this.selected_salud = this.cserve.getSalud()[+ruta.slice(10,11)];
         this.s_salud = +ruta.slice(10,11);
 
         this.k4 = +ruta.slice(11,13);
@@ -116,18 +76,6 @@ export class HomeComponent implements OnInit{
     return Math.pow(b,e);
   }
 
-  fulldata(){
-    return (
-      this.p1!=undefined &&
-      this.k1!=undefined &&
-      this.k2!=undefined &&
-      this.k3!=undefined &&
-      this.k4!=undefined &&
-      this.peso!=undefined &&
-      this.pienso!=undefined
-      );
-  }
-
   link(){
     let url:string = '';
     url += this.p1.toString();
@@ -141,14 +89,14 @@ export class HomeComponent implements OnInit{
     }
     url +=this.k2.toString();
 
-    url += this.fisio.indexOf(this.selected).toString();
+    url += this.cserve.getFisio().indexOf(this.selected).toString();
 
     if(this.k3<10){
       url+="0";
     }
     url +=this.k3.toString();
 
-    url += this.salud.indexOf(this.selected_salud).toString();
+    url += this.cserve.getSalud().indexOf(this.selected_salud).toString();
 
     if(this.k4<10){
       url+="0";
@@ -162,7 +110,8 @@ export class HomeComponent implements OnInit{
     url += p;
 
     
-    this.enlace = this.LOCALHOST+url;
+    this.enlace = this.cserve.getLocalhost()+url;
+   
   }
 
   ir(){
