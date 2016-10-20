@@ -6,8 +6,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
 
+
+
+export class HomeComponent implements OnInit{
+  private LOCALHOST = 'localhost:4200/';
   
   
   private tipo=[
@@ -40,7 +43,8 @@ export class HomeComponent implements OnInit{
     ['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
     ['Lactancia',20,40,'A valorar entre 2 y 4:'],
     ['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
-    ['Castración',8,undefined,'El valor es 0,8']
+    ['Castración',8,undefined,'El valor es 0,8'],
+    ['Ninguno de ellos',10,undefined, '']
   ];
   private salud=[
     ['Inactividad o reposo forzado',7,9],
@@ -66,6 +70,8 @@ export class HomeComponent implements OnInit{
 
   private ruta;
 
+  
+
   constructor(
     private param : ActivatedRoute,
     private router : Router
@@ -76,6 +82,7 @@ export class HomeComponent implements OnInit{
     this.param.params.forEach((p:Params)=>{
       ruta = p['id'];
       if(ruta != undefined){
+        this.enlace = this.LOCALHOST + ruta;
         this.p1 = +ruta.slice(0,3);
         this.k1 = +ruta.slice(3,5);
         this.k2 = +ruta.slice(5,7);
@@ -155,7 +162,7 @@ export class HomeComponent implements OnInit{
     url += p;
 
     
-    this.enlace = 'localhost:4200/'+url;
+    this.enlace = this.LOCALHOST+url;
   }
 
   ir(){
