@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit{
   private k3:number;
   private k4:number;
   private slider_selected:string;
-  private selected_salud;
   private peso:number;
   private pienso:number;
   private s_fisio;
@@ -45,11 +44,9 @@ export class HomeComponent implements OnInit{
         this.nrc = +ruta.slice(0,3);
         this.k1 = +ruta.slice(3,5);
         this.k2 = +ruta.slice(5,7);
- //       this.s_fisio = +ruta.slice(7,8);
+        this.s_fisio = this.cserve.getFisio()[+ruta.slice(7,8)];
         this.k3 = +ruta.slice(8,10);
-        this.selected_salud = this.cserve.getSalud()[+ruta.slice(10,11)];
-        this.s_salud = +ruta.slice(10,11);
-
+        this.s_salud = this.cserve.getSalud()[+ruta.slice(10,11)];
         this.k4 = +ruta.slice(11,13);
         this.pienso = +ruta.slice(13,17);
         this.peso = +ruta.slice(17,ruta.length)/10;
@@ -58,17 +55,54 @@ export class HomeComponent implements OnInit{
       
     })
   }
+  link(){
+    let url:string = '';
+    // 0-2
+    url += this.nrc.toString();
+    if(this.k1<10){
+      url+="0";
+    }
+    //3-4
+    url +=this.k1.toString();
+
+    if(this.k2<10){
+      url+="0";
+    }
+    //5-6
+    url +=this.k2.toString();
+    //7
+    url += this.cserve.getFisio().indexOf(this.s_fisio).toString();
+
+    if(this.k3<10){
+      url+="0";
+    }
+    //8-9
+    url +=this.k3.toString();
+    //10
+    url += this.cserve.getSalud().indexOf(this.s_salud).toString();
+
+    if(this.k4<10){
+      url+="0";
+    }
+    //11
+    url +=this.k4.toString();
+    //12-15
+    url += this.pienso.toString();
+
+    let p:string = (this.peso * 10).toString().slice(0,3);
+    //16-18
+    url += p;
+
+    
+    this.enlace = this.cserve.getLocalhost()+url;
+   
+  }
 
   inicializarK3(f){
       this.k3 = f[1]
   }
   
-  sliderFisio(f){
-    console.log(this.s_fisio);
-    this.k3 = f[1];
-  }
-  slider2(s){
-    this.selected_salud = s;
+  inicializarK4(s){
     this.k4 = s[1];
   }
   show(){
@@ -78,43 +112,7 @@ export class HomeComponent implements OnInit{
     return Math.pow(b,e);
   }
 
-  link(){
-    let url:string = '';
-    url += this.nrc.toString();
-    if(this.k1<10){
-      url+="0";
-    }
-    url +=this.k1.toString();
-
-    if(this.k2<10){
-      url+="0";
-    }
-    url +=this.k2.toString();
-
-    url += this.cserve.getFisio().indexOf(this.s_fisio).toString();
-
-    if(this.k3<10){
-      url+="0";
-    }
-    url +=this.k3.toString();
-
-    url += this.cserve.getSalud().indexOf(this.selected_salud).toString();
-
-    if(this.k4<10){
-      url+="0";
-    }
-    url +=this.k4.toString();
-
-    url += this.pienso.toString();
-
-    let p:string = (this.peso * 10).toString().slice(0,3);
-
-    url += p;
-
-    
-    this.enlace = this.cserve.getLocalhost()+url;
-   
-  }
+  
 
   ir(){
     console.log(this.enlace)

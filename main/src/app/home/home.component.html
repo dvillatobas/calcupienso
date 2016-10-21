@@ -45,9 +45,14 @@
           <md-radio-group [(ngModel)]="s_fisio">
             <div *ngFor="let f of cserve.fisio">
               <md-radio-button [value]="f" name="sssss" (click)="inicializarK3(f)" >{{f[0]}}</md-radio-button>
-              <p *ngIf="s_fisio === f ">{{f[3]}}</p>
-              <md-slider [(ngModel)]="k3" *ngIf="s_fisio === f " [min]="f[1]" [max]="f[2]" [value]="k3" ></md-slider>
-              <span *ngIf="s_fisio === f">{{k3/10}}</span>
+              <div *ngIf="s_fisio === f && f[2]!=undefined">
+                <p>{{f[3]}}</p>
+                <md-slider [(ngModel)]="k3" [min]="f[1]" [max]="f[2]" [value]="k3" ></md-slider>
+                <span>{{k3/10}}</span>
+              </div>
+              <div *ngIf="s_fisio === f && f[2]===indefined">
+                <input style="display:none;" type="" [(ngModel)]="k3" [value]="f[1]">
+              </div>
             </div>
           </md-radio-group>
           
@@ -55,15 +60,20 @@
         <md-card>
           <md-card-title>Estado de salud</md-card-title>
           <md-radio-group [(ngModel)]="s_salud">
-            <md-radio-button [value]="cserve.salud.indexOf(s)" name="sssss" *ngFor="let s of cserve.salud" (click)="slider2(s)">{{s[0]}}
-            </md-radio-button>
-            <p *ngIf="k4">{{selected_salud[3]}}</p>
-            <md-slider [(ngModel)]="k4" *ngIf="k4 && selected_salud[2] != undefined"  [min]="selected_salud[1]" [max]="selected_salud[2]" [value]="k4" ></md-slider>
-                <span *ngIf="k4">{{k4/10}}</span>
+            <div *ngFor="let s of cserve.salud" >
+              <md-radio-button [value]="s" name="sssss" (click)="inicializarK4(s)">{{s[0]}}</md-radio-button>
+              <div *ngIf="s_salud === s && s[2]!=undefined">
+                <p>{{s[3]}}</p>
+                <md-slider [(ngModel)]="k4"  [min]="s[1]" [max]="s[2]" [value]="k4" ></md-slider>
+                <span>{{k4/10}}</span>
+              </div>
+              <div *ngIf="s_salud === f && s[2]===indefined">
+                <input style="display:none;" type="" [(ngModel)]="k4" [value]="s[1]">
+              </div>
+            </div>
           </md-radio-group>
         </md-card>
         <md-card class="card-fin" id="end"> 
-          
             <md-card-title>Para finalizar</md-card-title>
             <md-card-content >
               <md-input placeholder="Peso" [(ngModel)]="peso">
