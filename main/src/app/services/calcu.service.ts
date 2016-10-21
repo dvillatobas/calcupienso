@@ -47,7 +47,7 @@ export class CalcuService {
 		['Perro deportivo o de trabajo corto e intenso',12],
 		['Perro deportivo o de trabajo de resistencia (5-8Km/dia)',13],
 		['Perro deportivo o de trabajo de resistencia (10-20Km/dia)',17],
-		['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',2]
+		['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',20]
   	];
 	private fisio=[
 		['Crecimiento',12,20,'Desde perros mini (1,2) a perros gigantes(2):'],

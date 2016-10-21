@@ -42,30 +42,25 @@
 
 md-radio-button{
     display: block !important;
+    font-weight: normal;
 }
 
 md-card{
-  margin-bottom: 20px;
+  margin: 30px;
 }
 md-input{
  width: 300px;
 }
-.fin{
-  width: 45%;
-  float: left;
-  margin-right: 2px;
-}
-.card-fin{
-  height: 500px;
-}
 
 .enlace{
-  margin-top: 20px;
+  margin-top: 5px;
   width: 350px;
-  float: left;
 }
 .ir-btn{
   margin-top: 17px;
   margin-left: 10px;
-  float: left;
 }
+.enlace-btn{
+  margin-bottom: 20px;
+}
+
