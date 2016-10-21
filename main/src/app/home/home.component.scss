@@ -45,7 +45,7 @@ md-radio-button{
     font-weight: normal;
 }
 
-md-card{
+md-card-content md-card{
   margin: 30px;
 }
 md-input{
@@ -54,7 +54,8 @@ md-input{
 
 .enlace{
   margin-top: 5px;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
 }
 .ir-btn{
   margin-top: 17px;
