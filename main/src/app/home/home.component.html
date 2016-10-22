@@ -95,6 +95,9 @@
         </div>
         <div class="row">
         <md-card class="col-xs-10 col-sm-11 col-md-5 col-lg-5">
+          <md-card-content *ngIf="!cserve.fulldata(nrc,k1,k2,k3,k4,peso,pienso)">
+            <md-card-title>Rellena correctamente todos los datos y automáticamente se mostrará aquí el resultado. </md-card-title>
+          </md-card-content>
           <md-card-content *ngIf="cserve.fulldata(nrc,k1,k2,k3,k4,peso,pienso)">
             <md-card-title color=primary>Tu perro debe comer {{cserve.calcular(nrc,k1,k2,k3,k4,peso,pienso) | number:'1.1-2'}} gr diarios.</md-card-title>
             <button class="enlace-btn" md-raised-button color=primary (click)="link()">Generar enlace</button>

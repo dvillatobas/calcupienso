@@ -91,11 +91,13 @@ export class CalcuService {
 	      k2!=undefined &&
 	      k3!=undefined &&
 	      k4!=undefined &&
-	      peso!=undefined &&
-	      pienso!=undefined
+	      (peso!=undefined && peso != 0 ) &&
+	      (pienso!=undefined && pienso != 0 )
 	      );
   	}
 	calcular(p1,k1,k2,k3,k4,peso,pienso){
+		
+		console.log(peso*5)
 		return p1*(Math.pow(peso,0.75))*k1*k2*k3*k4/pienso/10;
 	}
 	
