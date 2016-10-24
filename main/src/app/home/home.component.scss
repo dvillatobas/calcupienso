@@ -49,7 +49,9 @@ md-card-content md-card{
   margin: 30px;
 }
 md-input{
- width: 300px;
+  width: 100%;
+  max-width: 300px;
+ 
 }
 
 .enlace{
