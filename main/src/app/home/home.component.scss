@@ -2,6 +2,10 @@
 .app-sidenav {
   padding: 10px;
   min-width: 100px;
+  
+}
+.hidden{
+  display: none;
 }
 
 .app-icon-button {
@@ -32,12 +36,18 @@
 }
 
 .app-title{
-    margin-left: 20px;
+  width: 100%;
+    margin: auto;
+    font-size: 1.5em;
 }
+
+
+
 .app-content {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 md-radio-button{
@@ -53,7 +63,12 @@ md-input{
   max-width: 300px;
  
 }
-
+md-card{
+  font-family: 'Ubuntu', sans-serif;
+}
+md-toolbar{
+  font-family: 'Ubuntu', sans-serif;
+}
 .enlace{
   margin-top: 5px;
   width: 100%;
@@ -67,3 +82,6 @@ md-input{
   margin-bottom: 20px;
 }
 
+.footer{
+  color: #3f51b5 !important;
+}

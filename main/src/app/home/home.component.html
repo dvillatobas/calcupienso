@@ -3,19 +3,20 @@
     <button md-raised-button (click)="link()">Generar enlace</button>
   </md-sidenav>
   <md-toolbar color="primary">
-    <button class="app-icon-button" (click)="sidenav.toggle()">
+    <button class="app-icon-button hidden" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
-    <span class="app-title">Calcupienso</span> 
+    <span class="app-title text-center">CALCUPIENSO</span> 
     <span class="app-toolbar-filler"></span>
   </md-toolbar>
   <div class="app-content">
     <md-card>
-      <md-card-title class="text-center">Cálculo de la cantidad correcta de pienso para tu perro</md-card-title>
+      <md-card-title class="text-center">Cálculo de la cantidad correcta de pienso para tu perro según el National Research Council (NRC)</md-card-title>
       <md-card-content>
         <div class="row">
         <md-card class="col-xs-10 col-sm-11 col-md-5 col-lg-5">
           <md-card-title>¿Cómo es tu perro?</md-card-title>
+          <p>Selecciona la opción que más se aproxime a tu perro.</p>
           <md-radio-group [(ngModel)]="nrc">
             <md-radio-button *ngFor="let t of cserve.tipo" name="ncr" [value]="t[1]">
               {{t[0]}}
@@ -26,6 +27,7 @@
 
         <md-card class="col-xs-10 col-sm-11 col-md-5 col-lg-5">
           <md-card-title>¿Qué raza es?</md-card-title>
+          <p>Selecciona la opción que más se aproxime a tu perro.</p>
           <md-radio-group [(ngModel)]="k1">
             <md-radio-button *ngFor="let r of cserve.raza" name="k1" [value]="r[1]">
               {{r[0]}}
@@ -82,7 +84,7 @@
         <md-card class="col-xs-10 col-sm-11 col-md-5 col-lg-5">
           <md-card-title>Para finalizar</md-card-title>
           <md-card-content>
-            <md-input placeholder="Peso" [(ngModel)]="peso">
+            <md-input placeholder="Peso del perro" [(ngModel)]="peso">
               <span md-suffix>Kg</span>
             </md-input>
           </md-card-content>
@@ -90,6 +92,7 @@
             <md-input placeholder="Energía metabolizante del pienso" [(ngModel)]="pienso">
               <span md-suffix>Kcal/Kg</span>
             </md-input>
+            <p>La energía metabolizante del pienso la puedes encontrar en propio embase del pienso o en la página web del fabricante.</p>
           </md-card-content>
         </md-card>
         </div>
@@ -113,7 +116,7 @@
         
 
       </md-card-content>
-      
+      <p class="text-center footer">Calcupienso 2016</p>
     </md-card>
   </div>
 </md-sidenav-layout>

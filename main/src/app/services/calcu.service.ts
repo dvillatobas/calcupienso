@@ -50,11 +50,11 @@ export class CalcuService {
 		['Perro deportivo o de trabajo de resistencia (20-50Km/dia)',20]
   	];
 	private fisio=[
-		['Crecimiento',12,20,'Desde perros mini (1,2) a perros gigantes(2):'],
+		['Crecimiento',12,20,'A valorar, de crecimiento lento (1,2) a crecimiento muy rápido (2).'],
 		['Gestación',11,15,'A valorar entre 1,1 y 1,5:'],
 		['Lactancia',20,40,'A valorar entre 2 y 4:'],
 		['Vejez (+7 años)',8,9,'A valorar entre 0,8 y 0,9:'],
-		['Castración',8,undefined,'El valor es 0,8'],
+		['Castración',8,undefined,''],
 		['Ninguno de ellos',10,undefined, '']
   	];
   	private salud=[
