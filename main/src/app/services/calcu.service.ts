@@ -96,11 +96,18 @@ export class CalcuService {
 	      );
   	}
 	calcular(p1,k1,k2,k3,k4,peso,pienso){
-		
-		console.log(peso*5)
-		return p1*(Math.pow(peso,0.75))*k1*k2*k3*k4/pienso/10;
+		let p =peso;
+		if (isNaN(p)){
+			p = p.replace(",",".");
+			p = +p;
+		}
+		console.log(p)
+		return p1*(Math.pow(p,0.75))*k1*k2*k3*k4/pienso/10;
 	}
 	
+	isnan(n){
+		return isNaN(n);
+	}
 
 
 
